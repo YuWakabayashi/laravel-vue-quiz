@@ -19,7 +19,7 @@ class RankingController extends Controller
     public function index()
     {
         $weekRanking = Ranking::with('user')
-        ->select(DB::raw('MAX(rankings.percentage_correct_answer) as percentage_correct_answer, rankings.user_id, rankings.created_at'))
+        ->select(DB::raw('MAX(rankings.percentage_correct_answer) as percentage_correct_answer, rankings.user_id'))
         ->whereBetween('rankings.created_at', [now()->startOfWeek()->format('Y-m-d'), now()->endOfWeek()->format('Y-m-d')])
         ->limit(5)
         ->orderby('percentage_correct_answer', 'desc')
@@ -32,7 +32,7 @@ class RankingController extends Controller
         ];
 
         $monthRanking = Ranking::with('user')
-        ->select(DB::raw('MAX(rankings.percentage_correct_answer) as percentage_correct_answer, rankings.user_id, rankings.created_at'))
+        ->select(DB::raw('MAX(rankings.percentage_correct_answer) as percentage_correct_answer, rankings.user_id'))
         ->whereBetween('rankings.created_at', [now()->startOfMonth()->format('Y-m-d'), now()->endOfMonth()->format('Y-m-d')])
         ->limit(5)
         ->orderby('percentage_correct_answer', 'desc')
@@ -45,7 +45,7 @@ class RankingController extends Controller
         ];
 
         $totalRanking = Ranking::with('user')
-        ->select(DB::raw('MAX(rankings.percentage_correct_answer) as percentage_correct_answer, rankings.user_id, rankings.created_at'))
+        ->select(DB::raw('MAX(rankings.percentage_correct_answer) as percentage_correct_answer, rankings.user_id'))
         ->limit(5)
         ->orderby('percentage_correct_answer', 'desc')
         ->groupBy('rankings.user_id')
