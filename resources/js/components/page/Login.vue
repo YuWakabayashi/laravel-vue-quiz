@@ -20,7 +20,6 @@
                   id="login"
                   method="post"
                   tag="form"
-                  v-slot="{ invalid }"
                 >
                   <input type="hidden" name="_token" :value="csrf" />
 

@@ -99,7 +99,8 @@ export default {
       this.setRanking();
     });
     const referrer = document.referrer;
-    if (referrer.indexOf("/login") !== -1) {
+    var isLogin = document.querySelector('meta[name="api-token"]').getAttribute("content").length;
+    if (referrer.indexOf("/login") !== -1 && isLogin) {
       this.displayNotification("ログインしました", "info");
       this.resetReferrer();
     } else if (referrer.indexOf("/register") !== -1) {
