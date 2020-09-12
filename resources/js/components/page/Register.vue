@@ -21,7 +21,6 @@
                   method="post"
                   tag="form"
                   @submit.prevent="register()"
-                  v-slot="{ invalid }"
                 >
                 <input type="hidden" name="_token" :value="csrf" />
                   <div class="form-group">

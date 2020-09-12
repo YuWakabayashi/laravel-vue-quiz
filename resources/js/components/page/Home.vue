@@ -23,7 +23,7 @@
                 <button type="button" @click="checkAll">ON</button>
                 <button type="button" @click="checkAllOff">OFF</button>
               </div>
-              <button type="submit" class="btn btn-primary" @click.stop.prevent="goQuiz">出題開始</button>
+              <button type="submit" class="btn btn-primary" @click="goQuiz">出題開始</button>
               <input type="hidden" name="_token" value />
             </form>
           </section>
@@ -99,8 +99,7 @@ export default {
       this.setRanking();
     });
     const referrer = document.referrer;
-    var isLogin = document.querySelector('meta[name="api-token"]').getAttribute("content").length;
-    if (referrer.indexOf("/login") !== -1 && isLogin) {
+    if (referrer.indexOf("/login") !== -1) {
       this.displayNotification("ログインしました", "info");
       this.resetReferrer();
     } else if (referrer.indexOf("/register") !== -1) {

@@ -20,6 +20,7 @@
                   id="login"
                   method="post"
                   tag="form"
+                  @submit.prevent="login()"
                 >
                   <input type="hidden" name="_token" :value="csrf" />
 
